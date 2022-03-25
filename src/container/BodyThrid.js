@@ -12,7 +12,19 @@ function BodyThrid() {
                 <dd>Быстрая доставка по Беларуси;</dd>
                 <dd>Профессиональная консультация;</dd>
                 <dd>Скидки при оптовых закупках.</dd>
-            </dl>            
+            </dl> 
+            <div className='body-second-send-form'>
+              <div className='body-second-send-form-name'>Заявка на консультацию</div>   
+              <div className='body-second-send-form-main'>
+                <div className='body-second-send-form-main-top'>
+                    Для получения консультации - оставьте свой номер. И наш менеджер Вам перезвонит.
+                </div>
+                <div className='body-second-send-form-main-bottom'>
+                    <input type="text" name="phone" />                    
+                    <button className='body-second-send-form-main-bottom-button button-mainpage'>Оставить заявку</button>
+                </div>
+              </div>  
+            </div>           
          </div>   
           
          <div className='body-thrid-img'> 

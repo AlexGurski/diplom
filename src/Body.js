@@ -5,14 +5,16 @@ import BodyFirst from './container/BodyFirst'
 import BodySecond from './container/BodySecond';
 import BodyThrid from './container/BodyThrid';
 import BodyBetweenLine from './container/BodyBetweenLine';
+import News from './container/News';
 function Body() {
   return (
     <div className='body-main'>
        <BodyFirst/>
        <BodyBetweenLine/>
-       <BodySecond/>       
-       <BodyThrid/>
-       <BodyBetweenLine/>
+       <BodySecond/>  
+       <BodyBetweenLine/>     
+       <BodyThrid/>       
+       <News/>
     </div>
    
   );
