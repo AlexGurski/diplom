@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Link} from 'react-router-dom'
 import './assets/style/header-style.css';
 function Header() {
   return (
     <div className="Header">      
       <div className='header-main'>
-        <div id='header-logo'></div>
+        <Link to='/' className='header-logo-link'></Link>
         <div className='header-main-nav'>
-            <div><a>Каталог</a></div>  
-            <div><a>О компании</a></div>
-            <div><a>Новости</a></div>
-            <div><a>Контакты</a></div>
+            <div><Link to='/catalog'>Каталог</Link></div>  
+            <div><Link to='#'>О компании</Link></div>
+            <div><Link to='#'>Новости</Link></div>
+            <div><Link to='#'>Контакты</Link></div>
             <div><a>поиск</a> </div>
         </div>
       </div>

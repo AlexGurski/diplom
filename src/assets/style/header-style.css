@@ -4,6 +4,8 @@
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
 }
 .header-top{
     background-color: #f3f4f5;
@@ -27,7 +29,7 @@
    height: 80px;
    display: flex;
 }
-#header-logo{
+.header-logo-link{
     width: 50%;
     height: 100%;
     background: url('./../img/bzsp_logo.png') no-repeat center;

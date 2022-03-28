@@ -1,36 +1,52 @@
-import React from 'react';
+import React,{useState,useEffect, Component} from 'react';
 import ReactDOM from 'react-dom';
 import './../assets/style/news-style.css';
-function News() {
-  return (
-    <>
-    <h1 className='news-title'>НОВОСТИ</h1> 
-    <div className="news">       
-      <div className='news-form'>
-        <img className='news-form-img' src='./../../news/holliday.jpg'></img>
-        <span className='news-form-date'>1 января 2022г</span> 
-        <h4 className='news-form-name'>8-я международная специализированная выставка "Машиностроение-2022" в Минске</h4>
-        <div className='news-form-text'>В период с 5 по 8 апреля 2022 г. в Минске, пр-т. Победителей, 20/2, Футбольный манеж, пройдет международная специализированная выставка «Машиностроение-2022», на которой будет экспонироваться продукция нашего завода (стенд В4).
-        </div>
+import firebaseConfig from './base';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/database';
+
+class News extends Component{
+  constructor(){
+    super()
+    this.state = {
+      newsArray:[]
+    }
+    this.app = firebase.initializeApp(firebaseConfig);
+    this.database = this.app.database().ref('news')
+  }
+
+  newsBlock = ({date,name,discription,img})=>{
+    return(
+          <> 
+              <div className='news-form'>
+              <img className='news-form-img' src={require ('./../assets/img/news/'+img)}></img>
+                <span className='news-form-date'>{date}</span> 
+                <h4 className='news-form-name'>{name} </h4>
+                <div className='news-form-text'> {discription}</div>
+              </div>              
+          </>
+      )       
+} 
+  componentDidMount(){
+  this.database.on('value', snap =>{
+    this.setState({
+      newsArray:snap.val()
+    })    
+   })
+}
+  render(){
+    return (
+      <>
+      <h1 className='news-title'>НОВОСТИ</h1> 
+      <div className="news">       
+        {  
+          this.state.newsArray.map((el,count)=><this.newsBlock key={el.name}  className="news-form" name={el.name} date={el.date} img={el.image} discription={el.discription}/>)
+        } 
       </div>
-      <div className='news-form'>
-        <img className='news-form-img' src='./../../news/holliday.jpg'></img>
-        <span className='news-form-date'>1 января 2022г</span> 
-        <h4 className='news-form-name'>8-я международная специализированная выставка "Машиностроение-2022" в Минске</h4>
-        <div className='news-form-text'>В период с 5 по 8 апреля 2022 г. в Минске, пр-т. Победителей, 20/2, Футбольный манеж, пройдет международная специализированная выставка «Машиностроение-2022», на которой будет экспонироваться продукция нашего завода (стенд В4).
-        </div>
-      </div>
-      <div className='news-form'>
-        <img className='news-form-img' src='./../../news/holliday.jpg'></img>
-        <span className='news-form-date'>1 января 2022г</span> 
-        <h4 className='news-form-name'>8-я международная специализированная выставка "Машиностроение-2022" в Минске</h4>
-        <div className='news-form-text'>В период с 5 по 8 апреля 2022 г. в Минске, пр-т. Победителей, 20/2, Футбольный манеж, пройдет международная специализированная выставка «Машиностроение-2022», на которой будет экспонироваться продукция нашего завода (стенд В4).
-        </div>
-      </div>
-    </div>
-    </>
-    
-  );
+      <button className='button-mainpage'>Все новости</button> 
+      </>
+    )
+  }
 }
 
 export default News;

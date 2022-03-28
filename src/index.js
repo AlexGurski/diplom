@@ -1,22 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './Header';
-import Body from './Body';
-import Footer from './container/Footer';
+import App from './App';
 
-import './assets/style/all-style.css'
-
-
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
-     <Header/>,document.getElementById('head'),
+     <BrowserRouter>
+          <App/>
+     </BrowserRouter>
+     ,document.getElementById('root'),
 );
-ReactDOM.render(    
-     <Body />,document.getElementById('body'),
-);
-ReactDOM.render(    
-     <Footer/>,document.getElementById('footer'),
-);
+
 
 
 
