@@ -1,21 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../assets/style/body-style.css';
-import BodyFirst from '../container/BodyFirst'
-import BodySecond from '../container/BodySecond';
-import BodyThrid from '../container/BodyThrid';
-import BodyBetweenLine from '../container/BodyBetweenLine';
-import News from '../container/News';
-
+import '../assets/style/homepage-style.css';
+import HomepageFirst from '../container/Homepage-first'
+import HomepageAbout from '../container/Homepage-about'
+import HomepageProduction from '../container/Homepage-production'
+import HomepageWe from '../container/Homepage-we'
+import HomepageFeedback from '../container/Homepage-feedback'
 const Homepage = () => {
   return (
     <div className='body-main'>
-       <BodyFirst/>
-       <BodyBetweenLine/>
-       <BodySecond/>  
-       <BodyBetweenLine/>     
-       <BodyThrid/>       
-       <News/>
+       <HomepageFirst/>
+       <HomepageAbout/>
+       <HomepageProduction/>
+       <HomepageWe/>
+       <HomepageFeedback/>
     </div>
    
   );

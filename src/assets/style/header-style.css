@@ -3,18 +3,12 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 20px;
+
     position: relative;
     z-index: 2;
+    background-color: red;
 }
-.header-top{
-    background-color: #f3f4f5;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
 .header-top-container{
     width: 1280px;
     display: flex;

@@ -4,12 +4,9 @@ import '../assets/style/catalog.css';
 import firebaseConfig from '../container/base';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
-import { getDatabase, ref, child, get } from "firebase/database";
+import { Link} from 'react-router-dom'
 
 const app = firebase.initializeApp(firebaseConfig);
-const database = app.database().ref('catalog');
-
-const dbRef = ref(getDatabase());
 
    const Category = ({name,image})=>{
      return (     
@@ -20,14 +17,11 @@ const dbRef = ref(getDatabase());
   )
    }
 
-      const Catalog = () => {
+      const Catalog = (db) => {  
   const [state, setState] = useState([]);
   useEffect(()=>{
-    database.on('value', snap =>{  
-      console.log(snap.val())
-    setState(snap.val())      
- })  
-},[])
+    setState(db.db) 
+  },[db])
 
   return (
     <div className='catalog'>          
@@ -35,9 +29,13 @@ const dbRef = ref(getDatabase());
          <span>Каталог продукции</span>
          <div>PDF</div>
        </div>  
-       <div className='catalog-catalog'>    
+       <div className='catalog-catalog'>        
        {
-        Object.keys(state).map(el=><Category key={el} name={el} image={state[el].image}/>)
+        Object.keys(state).map(el=>
+              <Link to={`/catalog/${el}`} key={el}>
+                <Category  name={el} image={state[el].image}/>
+               </Link>
+        )
       }
       </div>
     </div>
