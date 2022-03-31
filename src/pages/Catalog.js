@@ -26,7 +26,7 @@ const app = firebase.initializeApp(firebaseConfig);
   return (
     <div className='catalog'>          
        <div className='catalog-name'>
-         <span>Каталог продукции</span>
+         <h2>Каталог продукции</h2>
          <div>PDF</div>
        </div>  
        <div className='catalog-catalog'>        

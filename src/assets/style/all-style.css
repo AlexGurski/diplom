@@ -1,25 +1,32 @@
 @font-face {
-	font-family: 'DelaGothic'; 
-	src: url(./../font/DelaGothicOne-Regular.ttf); 
+	font-family: 'Merriweather'; 
+	src: url(./../font/Merriweather-Light.ttf); 
 }
 *{
     margin: 0;
     padding: 0;
-    font-family: 'DelaGothic';
+    font-family: 'Merriweather';
 }
-body{
-    background: url('./../img/background.jpg') repeat;
-    background-repeat: repeat-y;
-    background-size: 100% auto;
-  }
+
   h1{
-      font-size: 55px;
-      padding-bottom: 20px;
+    font-size: 35px;
+    font-weight: 800;
   }
   h2{
-      padding-bottom: 20px;
+
+  }
+  h3{
+    font-weight: 500;
+    font-size: 16px;
+  }
+  h4{
+    font-weight: 500;
   }
   .body-main{
       display: flex;
       flex-direction: column;
+  }
+  a{
+    color: black;
+    text-decoration: none;
   }

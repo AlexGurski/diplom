@@ -35,7 +35,7 @@ const App = () =>{
                <Route path="/catalog/:id" element={<Productions db={state}/>} />
                <Route path="/catalog/:id/:product" element={<Product db={state}/>} />
           </Routes>   
-          <Footer />
+          <Footer/>
           </>)
 }
      

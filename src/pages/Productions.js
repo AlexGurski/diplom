@@ -17,8 +17,11 @@ useEffect(()=>{
 },[db.db[id]])
 
   return (
+    
     <div className='productions'>  
-      <div className='productions-list'>
+    <h2 className='productions-header'>{id}</h2>
+    <div className='productions-container'>
+    <div className='productions-list'>
       {
         productList.map(el=>
           <Link to={`/catalog/${el}`}  key={el}>
@@ -61,7 +64,10 @@ useEffect(()=>{
            }
            )   
         }
-      </div>      
+      </div>  
+
+    </div>
+        
     </div>
   );
 }

@@ -1,0 +1,27 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BiMap, BiPhoneCall } from "react-icons/bi";
+import {  MdMailOutline } from "react-icons/md";
+import {  SiMaildotru } from "react-icons/si";
+function HomepageFeedback() {
+  return (
+      <div className='homepage-we'>        
+            <div className='news-form'>
+              <img className='news-form-img' src={require ('./../assets/img/news/'+img)}></img>
+                <span className='news-form-date'>{date}</span> 
+                <h4 className='news-form-name'>{name} </h4>
+                <div className='news-form-text'> {discription}</div>
+              </div>      
+      </div>       
+  );
+}
+export default HomepageFeedback;
+
+
+<h1 className='news-title'>НОВОСТИ</h1> 
+      <div className="news">       
+        {  
+          this.state.newsArray.map((el,count)=><this.newsBlock key={el.name}  className="news-form" name={el.name} date={el.date} img={el.image} discription={el.discription}/>)
+        } 
+      </div>
+      <button className='button-mainpage'>Все новости</button> 

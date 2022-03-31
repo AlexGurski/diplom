@@ -2,17 +2,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;   
+    align-items: center;  
 }
 .catalog-name{
-    width: 1280px;
+    margin-top: 60px;
+    width: 80%;
     display: flex;
     justify-content: space-between;
 }
 .catalog-catalog{
     margin-top: 50px;
     margin-bottom: 50px;
-    width: 1280px;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;    
     justify-content: baseline;
@@ -26,8 +27,16 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    
     align-items: center;
+    -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.22);
+    box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.22);
+    transition: box-shadow .3s;
+}
+.catalog-product:hover{
+    -webkit-box-shadow: 0px 0px 18px -1px rgba(0, 0, 0, 0.30);
+    -moz-box-shadow: 0px 0px 18px -1px rgba(0, 0, 0, 0.30);
+    box-shadow: 0px 0px 18px -1px rgba(0, 0, 0, 0.30);
 }
 .catalog-product img{
     margin: 15px;
@@ -40,20 +49,38 @@
 }
 
 /*PRODUCTS*/
-.productions{
+.productions h2{
+    padding-top: 4%;
+    text-align: center;
+
+}
+.productions-container{
     display: flex;
+    margin-top: 2%;
 }
 .productions-list{
-    width: 20%;
+    width: 15%;
+    margin-left: 7%;
+    margin-top: -2%;
+    padding-bottom: 5%;
 }
 .productions-list div{
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 10px 8px;
+    margin: 10px 0;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.22);
+    box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.22);
+    transition: transform .3s;
+}
+.productions-list div:hover{
+    transform: scale(1.1);
 }
 .productions-show{
     width: 60%;
     display: flex;
-  
+    margin-top: 2%;
+    margin-left: 40px;
 }
 .productions-show-item{
     width: 200px;
@@ -65,6 +92,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.22);
+    box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.22);
+    transition: transform .3s;
+}
+.productions-show-item:hover{
+    transform: scale(1.1);
 }
 .productions-show-item img{
     width: 188px;

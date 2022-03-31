@@ -3,20 +3,23 @@ import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom'
 import './assets/style/header-style.css';
 function Header() {
+
+
   return (
-    <div className="Header">      
-      <div className='header-main'>
-        <Link to='/' className='header-logo-link'></Link>
-        <div className='header-main-nav'>
-            <div><Link to='/catalog'>Каталог</Link></div>  
-            <div><Link to='#'>О компании</Link></div>
-            <div><Link to='#'>Новости</Link></div>
-            <div><Link to='#'>Контакты</Link></div>
-            <div><a>поиск</a> </div>
-        </div>
-      </div>
-    </div>
+<div className="menu">
+    <div className="title">|  |</div>
+    <ul className="nav">
+    <li><Link to='/'>Главная</Link></li>
+      <li><Link to='/catalog'>Каталог</Link></li>
+      <li><Link to='#'>О компании</Link></li>
+      <li><Link to='#'>Новости</Link></li>
+      <li><Link to='#'>Контакты</Link></li>
+      <li><a>поиск</a> </li>          
+    </ul>
+</div>
+
   );
 }
 
 export default Header;
+

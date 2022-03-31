@@ -1,24 +1,27 @@
 import React,{useState,useEffect, Component} from 'react';
+import {Link} from 'react-router-dom'
 import './assets/style/footer-style.css';
-import { YMaps, Map, Placemark } from "react-yandex-maps";
 
-const mapData = {
-  center: [53.14829239965705,26.017544626983604],
-  zoom: 14,
-};
-const coordinates = [
-  [53.14829239965705,26.017544626983604]
-];
 
 const App = () => (
-  <div className='footer'>
-    <YMaps>
-        <Map  width='100%' height='400px' defaultState={mapData}>
-          {coordinates.map(coordinate => <Placemark geometry={coordinate} />)}
-        </Map>
-    </YMaps>
-    <div className='footer-bottom'>
-      Нормально или дерьмо? тут будет написана всякая хуйня. Футер короче
+  <div className='footer'>    
+    <div className='footer-left'>
+      <img  src={require('./assets/img/bzsp_logo.png')}/>
+    </div>
+    <div className='footer-center'>
+      <div className='footer-center-nav'>
+        <Link to='/'>Главная</Link>
+        <Link to='/catalog'>Каталог</Link>
+        <Link to='#'>О компании</Link>
+        <Link to='#'>Новости</Link>
+        <Link to='#'>Контакты</Link>
+      </div>
+      <div className='footer-center-adres'>
+      225411 Республика Беларусь, Брестская область,г. Барановичи, ул. Пролетарская, 40
+      </div>
+    </div>
+    <div className='footer-right'>
+      <h3>@БарГУ 2022</h3>
     </div>
   </div>
  
