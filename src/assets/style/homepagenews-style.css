@@ -6,6 +6,9 @@
     background-color: #eff5fa;
     height: 750px;
 }
+.news-form h5{
+    padding: 2px 0 10px 0;
+}
 .news-form #homepage-about-right-button{
 
     margin-top: 40px;
@@ -70,4 +73,7 @@
 .card .details p {
     margin: 10px 0 0;
     color: #fff;
+}
+.news-form-container :nth-child(n+6) {
+	display: none;
 }

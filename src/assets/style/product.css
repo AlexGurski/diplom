@@ -24,7 +24,7 @@
 .product-item-button{
     margin-top: 20px;
     display: flex;
-    width: 100%;
+    width: 75%;
 }
 .product-item-button span{
     width: 50%;
@@ -49,4 +49,17 @@
 }
 .product-item-right :last-child{
     padding-top: 20px;
+}
+.button-back{
+    position: fixed;
+    top:40px;
+    padding: 10px 20px;
+    background-color: #4282e3;
+    border-radius: 20px;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+.button-back:hover{
+   opacity: 1;
 }

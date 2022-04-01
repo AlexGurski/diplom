@@ -27,18 +27,19 @@ useEffect(()=>{
     <div className='Product'>  
       {
         <div className='product-container'>
+          <Link to={'/catalog/'+id} className='button-back'>Назад</Link>
           <h1>{product}</h1>
           <div className='product-item'>
           <div className='product-item-left'>
               {productName.image?
                         productName.image.picture?
                         <img style={imageChoise.image}  src={require('./../assets/img/product/'+productName.image.picture)}/>
-                        :console.log()
+                        :<img style={imageChoise.image}  src={require('./../assets/img/product/no_photo.jpg')}/>
               :console.log()} 
               {productName.image?
                         productName.image.plan?
                         <img style={imageChoise.plan} src={require('./../assets/img/product/'+productName.image.plan)}/>
-                        :console.log()
+                        :<img style={imageChoise.plan} src={require('./../assets/img/product/no_photo.jpg')}/>
               :console.log()} 
              <div className='product-item-button'>
                 <span style={imageChoise.colorImage} onClick={()=>
@@ -62,7 +63,7 @@ useEffect(()=>{
             <div className='product-item-right'>  
             <div className='product-discription'>
               <h2>Описание</h2>
-                <p>{productName.discription}</p>
+                      {productName.discription? productName.discription.map(el=> <p>{el}</p>) :undefined}
                 {productName.complectation?
                   <>
                       <h2>Комплектация</h2>

@@ -13,7 +13,7 @@ const App = () => (
         <Link to='/'>Главная</Link>
         <Link to='/catalog'>Каталог</Link>
         <Link to='#'>О компании</Link>
-        <Link to='#'>Новости</Link>
+        <Link to='/news'>Новости</Link>
         <Link to='#'>Контакты</Link>
       </div>
       <div className='footer-center-adres'>

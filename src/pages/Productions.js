@@ -11,6 +11,7 @@ const {id} =  useParams();
 
 const [productName, setProductName]=useState([])
 const [productList, setProductList]=useState([])
+
 useEffect(()=>{
   setProductList(Object.keys(db.db))
   db.db[id] !=undefined ? setProductName(db.db[id]):setProductName([])

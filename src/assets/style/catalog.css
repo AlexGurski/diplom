@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;  
+    
 }
 .catalog-name{
     margin-top: 60px;
@@ -11,6 +12,7 @@
     justify-content: space-between;
 }
 .catalog-catalog{
+    
     margin-top: 50px;
     margin-bottom: 50px;
     width: 80%;
@@ -61,7 +63,7 @@
 .productions-list{
     width: 15%;
     margin-left: 7%;
-    margin-top: -2%;
+    margin-top: 2%;
     padding-bottom: 5%;
 }
 .productions-list div{
@@ -77,6 +79,8 @@
     transform: scale(1.1);
 }
 .productions-show{
+    margin-bottom: 4%;
+    background-color: #eff5fa;
     width: 60%;
     display: flex;
     margin-top: 2%;

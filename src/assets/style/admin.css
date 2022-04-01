@@ -1,0 +1,8 @@
+.admin-catalog{
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+}
+.admin-catalog input{
+    width: 300px;
+}

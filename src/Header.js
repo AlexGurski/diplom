@@ -12,7 +12,7 @@ function Header() {
     <li><Link to='/'>Главная</Link></li>
       <li><Link to='/catalog'>Каталог</Link></li>
       <li><Link to='#'>О компании</Link></li>
-      <li><Link to='#'>Новости</Link></li>
+      <li><Link to='/news'>Новости</Link></li>
       <li><Link to='#'>Контакты</Link></li>
       <li><a>поиск</a> </li>          
     </ul>
