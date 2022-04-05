@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import '../assets/style/catalog.css';
+import '../assets/style/productions.css';
 import { Link} from 'react-router-dom'
 
 import 'firebase/compat/database';
@@ -20,7 +20,9 @@ useEffect(()=>{
   return (
     
     <div className='productions'>  
-    <h2 className='productions-header'>{id}</h2>
+    <p class="text">
+      {id}
+    </p>
     <div className='productions-container'>
     <div className='productions-list'>
       {
@@ -31,6 +33,7 @@ useEffect(()=>{
         )
       }
       </div>  
+      <div className='productions-show-container'>
       <div className='productions-show'>
         { 
            Object.keys(productName).map(el=>{
@@ -66,7 +69,7 @@ useEffect(()=>{
            )   
         }
       </div>  
-
+      </div>
     </div>
         
     </div>

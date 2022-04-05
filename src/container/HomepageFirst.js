@@ -9,9 +9,7 @@ function HomepageFirst() {
       <div className='homepage-first-left-header'>
           <div className='homepage-first-left-header-logo'>
           </div>
-          <div className='homepage-first-left-header-language'>
-            RU | EN
-          </div>
+          
         </div>
         <div className='homepage-first-left-middle'>
           <h1>
@@ -22,7 +20,8 @@ function HomepageFirst() {
           </h3>
         </div>
         <div className='homepage-first-left-footer'>
-          <MdOutlineArrowDownward color="#4282e3" fontSize="1em" /> Ниже информация о нас
+          <MdOutlineArrowDownward color="#4282e3" fontSize="1em" /> 
+          Связаться с нами
         </div>
       </div>
       <div className='homepage-first-right'>

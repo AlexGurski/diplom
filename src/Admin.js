@@ -10,11 +10,11 @@ const app = firebase.initializeApp(firebaseConfig);
 const database = app.database();
 
 const Admin = () => {
-  var ref = firebase.database().ref('catalog/');
+  const ref = firebase.database().ref('catalog/');
 
   const [type, setType] = useState('');
   const [name, setName] = useState('');
-  const [discription, setDiscription] = useState('');
+  const [discription, setDiscription] = useState([]);
   const [notationName, setNotationName] = useState('');
   const [notationValue, setNotationValue] = useState('');
   const [picture, setPicture] = useState('');
@@ -22,49 +22,88 @@ const Admin = () => {
   const [pdf, setPdf] = useState('');
   const [video, setVideo] = useState('');
 
+
+  const[dataBase, setDataBase] = useState([])
   useEffect(()=>{
     ref.on("value", function(snapshot) {
-      console.log(snapshot.val());
+      //console.log(Object.keys(snapshot.val()) );
+      setDataBase(Object.keys(snapshot.val()) )
    }, function (error) {
       console.log("Error: " + error.code);
    });
     
   },[])
 
- 
-
 const addToDB = ()=>{
 
- ref.update({
-    type:{
-    //  image:'ganteli-1.jpg',
-        name:{
-        discription:{1:discription},
-        notation:{
-          notationName:notationValue
-        },
-        image:{
-          picture:picture,
-          plan:plan,
-          pdf:pdf,
-          video:video
-        }
+  let qwerty = ()=> {
+    let qwer = {}
+    if (discription){
+      qwer[name]={...qwer[name],
+        discription:discription, 
       }
     }
-  })
+  
+  if (picture){
+    qwer[name]={...qwer[name],
+      image:{
+        picture:picture
+      }
+    }
+  }
+ 
+  if (plan){
+    qwer[name]={...qwer[name],
+      image:{
+        ...qwer[name].image,
+        plan:plan
+      }
+    }
+  }
+  
 
+ if (pdf){
+      qwer[name]={...qwer[name],
+        image:{
+          ...qwer[name].image,
+          pdf:pdf
+        }
+      }
+ } 
+
+if (video) {
+  qwer[name]={...qwer[name],
+    image:{
+      ...qwer[name].image,
+      video:video
+    }
+  }
+} 
+if (notationName){
+  qwer[name]={...qwer[name],
+    notation:{
+      [notationName]:notationValue
+    }
+  }
+}
+return qwer
+  }
+  firebase.database().ref('catalog/'+type).update(
+      qwerty() 
+    )
+    console.log(qwerty())  
 }
      
- 
-
   return (
     <div className='admin-catalog' > 
       тип
-      <input type='text' onChange={(e) => setType(e.target.value)}/>
+      <select onChange={e=>setType(e.target.value)}>
+       {dataBase.map(el=><option>{el}</option>)} 
+      </select>
       имя
       <input type='text' onChange={(e) => setName(e.target.value)}/>
       discription
-      <input type='text' onChange={(e) => setDiscription(e.target.value)}/>
+      <input type='text' onKeyPress={(e => e.key==='Enter'?setDiscription([...discription, e.target.value]):console.log( ))}/>
       notation
       <input type='text' onChange={(e) => setNotationName(e.target.value)} />
       <input type='text' onChange={(e) => setNotationValue(e.target.value)} />

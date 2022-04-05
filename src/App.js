@@ -6,7 +6,9 @@ import Header from './Header';
 import { Homepage } from './pages/Homepage';
 import { Catalog } from './pages/Catalog';
 import { Productions } from './pages/Productions';
+import { Search } from './pages/Search';
 import { Product} from './pages/Product';
+import { Contacts } from './pages/Contacts';
 import Footer from './Footer';
 import Admin from './Admin';
 import {News} from './pages/News';
@@ -34,19 +36,21 @@ const App = () =>{
      })
      },[])
      return (<>
+
           <Header/>      
           <Routes>
                <Route path='/' element={<Homepage news={stateNews} />}/>  
                <Route path='/catalog' element={<Catalog db={state}/> }/> 
                <Route path="/catalog/:id" element={<Productions db={state}/>} />
+               <Route path="/search" element={<Search/>} />
                <Route path="/catalog/:id/:product" element={<Product db={state}/>} />
                <Route path='/news' element={<News news={stateNews}/> }/>  
                <Route path='/admin' element={<Admin/> }/>  
+               <Route path='/contacts' element={<Contacts/> }/>  
           </Routes>   
           <Footer/>
           </>)
 }
-     
      
 export default App;
 

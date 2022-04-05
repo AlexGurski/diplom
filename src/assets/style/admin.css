@@ -3,6 +3,6 @@
     flex-direction: column;
     padding-left: 100px;
 }
-.admin-catalog input{
+.admin-catalog *{
     width: 300px;
 }

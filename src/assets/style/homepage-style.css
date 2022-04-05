@@ -1,5 +1,6 @@
 .homepage-first{
     display: flex;
+    background:url('./../img/background.jpg')0 0/auto auto no-repeat;
 }
 .homepage-first-left{
     margin-top: 50px;
@@ -7,6 +8,7 @@
     padding-right: 70px;
     width: 60%;
     height: calc(100vh - 50px);
+    color: white;
 }
 .homepage-first-left-header{
     margin-top: 30px;
@@ -33,7 +35,7 @@
     width: 40%;
     margin-top: 50px;
     margin-bottom: 50px;
-    background:url('./../img/6.jpg')0 0/100% 100% no-repeat;
+
 }
 .homepage-first-left-footer{
     padding-left: 10%;
@@ -91,6 +93,10 @@
     justify-content: center;
     align-items: center;
     width: 80%;
+    color: white;
+}
+.homepage-production-container h4{
+    color:white
 }
 .homepage-production-container h2{
     margin-top: -10px;
@@ -110,15 +116,15 @@
     height: 350px;
     margin-left: 10px;
     margin-right: 10px;
-    -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.22);
--moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.22);
-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0px 0px 9px -1px rgba(255, 255, 255, 0.22);
+-moz-box-shadow: 0px 0px 9px -1px rgba(255, 255, 255, 0.22);
+box-shadow: 0px 0px 9px -1px rgba(255, 255, 255, 0.22);
 transition: box-shadow .3s;
 }
 .homepage-production-list-item:hover{
-    -webkit-box-shadow: 0px 0px 19px -1px rgba(0, 0, 0, 0.22);
-    -moz-box-shadow: 0px 0px 19px -1px rgba(0, 0, 0, 0.22);
-    box-shadow: 0px 0px 19px -1px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0px 0px 19px -1px rgba(255, 255, 255, 0.22);
+    -moz-box-shadow: 0px 0px 19px -1px rgba(255, 255, 255, 0.22);
+    box-shadow: 0px 0px 19px -1px rgba(255, 255, 255, 0.22);
 
 }
 .circle{
@@ -145,6 +151,7 @@ align-items: center;
 .homepage-contacts h2{
     margin-top: 120px;
     margin-bottom: 80px;
+    color: white;
 }
 .homepage-contacts-container{
     background-color: #eff5fa;
