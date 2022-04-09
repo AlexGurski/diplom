@@ -12,6 +12,7 @@ import { Contacts } from './pages/Contacts';
 import Footer from './Footer';
 import Admin from './Admin';
 import {News} from './pages/News';
+import {About} from './pages/About';
 import './assets/style/all-style.css'
 
 import firebaseConfig from './container/base';
@@ -47,6 +48,7 @@ const App = () =>{
                <Route path='/news' element={<News news={stateNews}/> }/>  
                <Route path='/admin' element={<Admin/> }/>  
                <Route path='/contacts' element={<Contacts/> }/>  
+               <Route path='/about' element={<About/> }/>  
           </Routes>   
           <Footer/>
           </>)

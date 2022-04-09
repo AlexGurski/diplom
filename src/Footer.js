@@ -12,9 +12,9 @@ const App = () => (
       <div className='footer-center-nav'>
         <Link to='/'>Главная</Link>
         <Link to='/catalog'>Каталог</Link>
-        <Link to='#'>О компании</Link>
+        <Link to='/about'>О компании</Link>
         <Link to='/news'>Новости</Link>
-        <Link to='#'>Контакты</Link>
+        <Link to='/contacts'>Контакты</Link>
       </div>
       <div className='footer-center-adres'>
       225411 Республика Беларусь, Брестская область,г. Барановичи, ул. Пролетарская, 40

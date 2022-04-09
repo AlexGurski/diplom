@@ -44,7 +44,7 @@ function Header() {
     <ul className="nav">
       <li><Link to='/'>Главная</Link></li>
       <li><Link to='/catalog'>Каталог</Link></li>
-      <li><Link to='#'>О компании</Link></li>
+      <li><Link to='/about'>О компании</Link></li>
       <li><Link to='/news'>Новости</Link></li>
       <li><Link to='/contacts'>Контакты</Link></li>
       

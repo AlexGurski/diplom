@@ -1,6 +1,5 @@
 .news{
   display: flex;
-  
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -8,6 +7,7 @@
 .news h2{
   text-align: center;
   padding: 4% 0 1% 0;
+  color: white;
 }
 .news-container{
   display: flex;
@@ -117,4 +117,67 @@
   color: #44BCC5;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
   transition: all 350ms linear;
+}
+
+/* MODAL */
+.closeModalNews{
+  color: black;
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.closeModalNews:hover{
+  color: red;
+}
+.modal-window {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.897);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  transition: all 0.3s;
+}
+.modal-window p{
+  padding-top: 3px;
+  padding-bottom: 2px;
+}
+.modal-window > div {
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  background: white;
+}
+.modal-window header {
+  font-weight: bold;
+}
+.modal-window h1 {
+  font-size: 150%;
+  margin: 0 0 15px;
+}
+
+
+.modal-close:hover {
+  color: black;
+}
+
+/* Demo Styles */
+
+
+.modal-window > div {
+  border-radius: 1rem;
+}
+
+.modal-window div:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+
+small {
+  color: lightgray;
 }

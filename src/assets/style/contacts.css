@@ -6,7 +6,6 @@
   flex-direction: column;
 }
 .contacts-container{
- 
   height: 90vh;
   width: 80%;
 
@@ -93,6 +92,26 @@
   flex-basis: 20%;
 }
 @media all and (max-width: 767px) {
+.contacts{
+  width: calc(100% - 20px);
+}
+  .contacts-container{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .contacts-container > div{
+    width: 90%;
+  }
+  .paper-container{
+    padding-left: 20px;
+    padding-right: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+  }
   .responsive-table .table-header {
     display: none;
   }

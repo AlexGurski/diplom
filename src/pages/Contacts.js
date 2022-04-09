@@ -77,10 +77,10 @@ function Contacts() {
     </li>
     {state.map(el=>
       <li class="table-row">
-      <div class="col col-1" data-label="Job Id">{el.name}</div>
-      <div class="col col-2" data-label="Customer Name">{el.phone}</div>
-      <div class="col col-3" data-label="Amount">{el.fax}</div>
-      <div class="col col-4" data-label="Payment Status">{el.email}</div>
+      <div class="col col-1" data-label="">{el.name}</div>
+      <div class="col col-2" data-label="ТЕЛЕФОН">{el.phone}</div>
+      <div class="col col-3" data-label="ФАКС">{el.fax}</div>
+      <div class="col col-4" data-label="E-MAIL">{el.email}</div>
     </li>
       )}
     

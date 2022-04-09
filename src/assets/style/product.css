@@ -1,5 +1,7 @@
 .product-container{
     padding: 7%;
+    color: black;
+    background-color: white;
 }
 .product-container h1{
     text-align: center;
@@ -16,6 +18,7 @@
     align-items: center;
     flex-direction: column;
     width: 45%;
+    color: black;
 }
 .product-item-left img{
     width: 300px;
