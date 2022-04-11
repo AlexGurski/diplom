@@ -18,6 +18,7 @@ import './assets/style/all-style.css'
 import firebaseConfig from './container/base';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
+import { NotFound } from './pages/404';
 
 
 const app = firebase.initializeApp(firebaseConfig);
@@ -38,23 +39,24 @@ const App = () =>{
      },[])
      return (<>
 
-          <Header/>      
-          <Routes>
+          <Header/>{/*главное меню которое будет отражено на всех страницах без перезагрузки страницы  */ }    
+          <Routes> {/* пути для страниц. браузер определяет куда осуществляется переход и рендерит заданный компонент  */ }   
                <Route path='/' element={<Homepage news={stateNews} />}/>  
                <Route path='/catalog' element={<Catalog db={state}/> }/> 
                <Route path="/catalog/:id" element={<Productions db={state}/>} />
-               <Route path="/search" element={<Search/>} />
+               <Route path="/search" component={<Search />} />
                <Route path="/catalog/:id/:product" element={<Product db={state}/>} />
                <Route path='/news' element={<News news={stateNews}/> }/>  
                <Route path='/admin' element={<Admin/> }/>  
                <Route path='/contacts' element={<Contacts/> }/>  
                <Route path='/about' element={<About/> }/>  
+               <Route path='/*' element={<NotFound/> }/> 
           </Routes>   
-          <Footer/>
+          <Footer/>{/*футер который будет отражен на всех страницах без перезагрузки страницы  */ }   
           </>)
 }
      
-export default App;
+export default App; //экспорт функции. которая принимается в index.js
 
 
 

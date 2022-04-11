@@ -4,7 +4,7 @@ import '../assets/style/product.css';
 import YouTube from 'react-youtube';
 import { Link} from 'react-router-dom'
 
-import 'firebase/compat/database';
+import FeedBack from '../container/FeedBack'
 import { useParams} from 'react-router-dom'
 
 const Product = (db) => {
@@ -24,7 +24,8 @@ useEffect(()=>{
 },[db])
 
   return (
-    <div className='Product'>  
+    <div className='Product'> 
+    <FeedBack element={product}/> 
       {
         <div className='product-container'>
           <Link to={'/catalog/'+id} className='button-back'>Назад</Link>
@@ -77,7 +78,7 @@ useEffect(()=>{
             </div>
           </div>
           </div>
-          {console.log(productName)}
+        
         </div>
       }
     </div>      

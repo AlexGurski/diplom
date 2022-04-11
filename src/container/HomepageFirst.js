@@ -5,8 +5,8 @@ import Modal from './../container/modalSend'
 function HomepageFirst() {
   const [modal,setModal]=useState(false)
 useEffect(()=>{
-  console.log('sdf')
 },[modal])
+
   return (
     <div className='homepage-first'>
       {modal?<Modal onModalClose={()=>{setModal(!modal)}} state={modal}/>:undefined}

@@ -9,8 +9,6 @@
     overflow-y: hidden;
     position: fixed;
     transition: 1s;
-   
-
   }
   .closeModal{
       color: white;
@@ -24,7 +22,6 @@
       color: red;
   }
   .login-box {
-
     position: absolute;
     top: 50%;
     left: 50%;
@@ -59,10 +56,14 @@
     outline: none;
     background: transparent;
   }
+  textarea{
+    font-size: 12px;
+    padding-left: 15px;
+  }
   .login-box .user-box textarea{
     width: 100%;
     padding: 10px 0;
-    font-size: 16px;
+   
     color: #fff;
     background: rgba(0,0,0,.5);
     box-sizing: border-box;
@@ -193,4 +194,3 @@
       bottom: 100%;
     }
   }
-  

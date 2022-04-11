@@ -12,6 +12,7 @@ const database = app.database().ref('about');
 
    const List = (props)=>{
      const [state, setState]=useState([])
+     
     useEffect(()=>{
       database.on('value', snap =>{  
         setState(snap.val())     

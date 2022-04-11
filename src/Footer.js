@@ -2,7 +2,7 @@ import React,{useState,useEffect, Component} from 'react';
 import {Link} from 'react-router-dom'
 import './assets/style/footer-style.css';
 
-
+//обычная разметка как в хтмл
 const App = () => (
   <div className='footer'>    
     <div className='footer-left'>
