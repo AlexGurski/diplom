@@ -37,7 +37,7 @@ useEffect(()=>{
       <div className='productions-show'>
         { 
            Object.keys(productName).map(el=>{
-          //  console.log(productName[el]) 
+            console.log(productName) 
             return(
               el=='image'?undefined:
               <Link to={`/catalog/${id}/${el}`}  key={el}>

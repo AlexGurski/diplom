@@ -27,12 +27,15 @@ const databaseNews = app.database().ref('news');
 
 
 const App = () =>{
+
      const [state, setState] = useState([]);
      const [stateNews, setStateNews] = useState([]);
+
      useEffect(()=>{
        database.on('value', snap =>{  
        setState(snap.val())      
      })  
+
      databaseNews.on('value', snap =>{  
           setStateNews(snap.val())      
      })
@@ -44,7 +47,7 @@ const App = () =>{
                <Route path='/' element={<Homepage news={stateNews} />}/>  
                <Route path='/catalog' element={<Catalog db={state}/> }/> 
                <Route path="/catalog/:id" element={<Productions db={state}/>} />
-               <Route path="/search" component={<Search />} />
+               <Route path="/search/:id" element={<Search  db={state}/>} />
                <Route path="/catalog/:id/:product" element={<Product db={state}/>} />
                <Route path='/news' element={<News news={stateNews}/> }/>  
                <Route path='/admin' element={<Admin/> }/>  

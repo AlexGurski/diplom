@@ -1,6 +1,5 @@
 
 
-/*PRODUCTS*/
 .productions h2{
     padding-top: 4%;
     text-align: center;
@@ -18,6 +17,7 @@
     padding-top: 50px;
     margin-left: -100px;
     height: calc(100% - 50px);
+    flex-wrap: wrap;
 }
 .productions-list{
     width: 15%;
@@ -44,6 +44,8 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
     
     display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
     position: relative;
     width: 70%;
     height: 100%;
