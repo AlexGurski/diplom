@@ -20,7 +20,7 @@ useEffect(()=>{
   return (
     
     <div className='productions'>  
-    <p class="text">
+    <p class="text" lang="ru">
       {id}
     </p>
     <div className='productions-container'>
@@ -28,7 +28,7 @@ useEffect(()=>{
       {
         productList.map(el=>
           <Link to={`/catalog/${el}`}  key={el}>
-              <div>{el}</div>
+              <div lang="ru">{el}</div>
           </Link>
         )
       }

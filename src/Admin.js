@@ -50,11 +50,18 @@ const addToDB = ()=>{
   let qwerty = ()=> {
     let qwer = {}
 
+    
     if (discription){
       qwer[name]={...qwer[name],
         discription:discription, 
       }
     }
+  
+    if (type){
+      qwer[name]={...qwer[name],
+        key:type, 
+    }
+  }
   
   if (picture){
     qwer[name]={...qwer[name],

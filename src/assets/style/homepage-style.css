@@ -178,3 +178,128 @@ padding-right: 20px;
 .homepage-contacts-left > * > span {
         padding-top: 20px;
     }
+
+    @media screen  and (orientation: portrait){
+        .body-main{
+            width: 100vw;
+        }
+        .homepage-first{
+            height: 500px;
+            background: url('./../img/adaptiveBack.jpg') 0 0/100% 100% no-repeat;;
+            width: 100vw;
+        }
+        .homepage-first-left-header{
+            margin: 0;
+            padding-left: 20px;
+        }
+        .homepage-first-right{
+            display: none;
+        }
+        .homepage-first-left{
+            width: 100vw;
+            padding: 0;
+        }
+        .homepage-first-left-middle {
+            padding-top: 0;
+        }
+        .homepage-first-left-middle h1{
+            font-size: 20px;
+        }
+        .homepage-first-left-footer{
+            padding-left: 10%;
+            color:#4282e3;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .homepage-about{
+            height: 380px;
+            display: flex;
+            justify-content: center;
+        }
+        .homepage-about-container{
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 10%;
+            margin: 0;
+            align-items: center;
+            width: 100vw;
+            height: 100%;
+        }
+        .homepage-about-left, .homepage-about-right{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 80%;
+        }
+        .homepage-about-right h3{
+            display: none;
+        }
+        .homepage-about-right a{
+            width: 75%;
+        }
+        .homepage-production{
+            height: 100%;
+        }
+        .homepage-production-list{
+            flex-direction: column;
+        }
+        .homepage-contacts{
+            background-color: #eff5fa;
+        }
+        .homepage-contacts h2{
+            padding: 0;
+            margin: 20px 0 ;
+            color: black;
+        }
+        .homepage-contacts-container{
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            height: 100%;
+        }
+        .homepage-contacts-container > div{
+            width: 90%;
+        }
+        .homepage-contacts-left{
+            justify-content: center;
+            height: auto;
+            padding-bottom: 20px;
+        }
+        .homepage-contacts-left > div span:nth-child(1){ 
+            display: none;
+        }
+        .homepage-production-list{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .homepage-production-list-item{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            width: 40%;
+            height: 50vw;
+           margin-bottom: 20px
+        }
+        .homepage-production-list-item h4{
+            text-align: center;
+        }
+        .circle{
+            width: 55%; 
+            height: 30%;
+            background: #eff5fa;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+            .circle img{
+                width: 65%;
+            }
+           
+    }

@@ -40,7 +40,9 @@ const Search = (props) => {
   
   return <div className='productions-show-container'>
   <div className='productions-show'>
-  { 
+    {search(id,array).length===0?<div style={{height:'30vh'}}>"{id}" не найдено</div>:undefined}
+  {
+
      search(id,array, props).map(el=>{
       
       return(

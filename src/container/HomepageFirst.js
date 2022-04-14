@@ -14,7 +14,6 @@ useEffect(()=>{
       <div className='homepage-first-left-header'>
           <div className='homepage-first-left-header-logo'>
           </div>
-          
         </div>
         <div className='homepage-first-left-middle'>
           <h1>

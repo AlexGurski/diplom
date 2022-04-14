@@ -6,7 +6,7 @@ import { Link} from 'react-router-dom'
 const ModalNews = (props) =>
   <div id="open-modal" class="modal-window">
     {console.log(props)}
-  <div>
+  <div className='news-text'>
   <div className='closeModalNews' onClick={()=>props.onModalClose()}>╳</div>
     <h1>{props.news.name}</h1>
     {props.news.text.map(el=><p key={el+el}>{el}</p>)}

@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import ReactDOM from 'react-dom';
+import '../assets/style/productions.css';
 import '../assets/style/about.css';
+import FeedBack from '../container/FeedBack'
 import firebaseConfig from '../container/base';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
@@ -19,7 +21,7 @@ const database = app.database().ref('about');
     }) },[])
 
      return (     
-    <div className='about-list'>
+    <div className='productions-list' >
       {state.map(el=><p onClick={()=>{props.onChangeList(el)}} key={el}>{el}</p>)}
     </div>
   )
@@ -28,8 +30,9 @@ const database = app.database().ref('about');
 const About = () => {
   const [name, setName] = useState('О компании')
   return (
-    <div className='about-main'>   
-      <div className='about-container'>
+    <div className='productions'>   
+    <FeedBack /> 
+      <div className='productions-container'>
         <List onChangeList={(name)=>{setName(name)}} state={name}/>
         <div className='about-show-container'>
             <div className='about-show'>

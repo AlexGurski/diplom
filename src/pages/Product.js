@@ -13,7 +13,7 @@ const {id, product} =  useParams();
 const [productName, setProductName]=useState([])
 const [imageChoise, setImageChoise]=useState({
   image:{display:''},
-  plan:{display:'none'},
+  plan:{display:'none', width:'100%', height:'100%'},
   colorImage:{background:'#4282e3'},
   colorPlan:{background:'white'}
 })
@@ -28,18 +28,18 @@ useEffect(()=>{
     <FeedBack element={product}/> 
       {
         <div className='product-container'>
-          <Link to={'/catalog/'+id} className='button-back'>Назад</Link>
+          <Link to={'/catalog/'+id} className='button-back'><span>Назад</span></Link>
           <h1>{product}</h1>
           <div className='product-item'>
           <div className='product-item-left'>
               {productName.image?
                         productName.image.picture?
-                        <img style={imageChoise.image}  src={require('./../assets/img/product/'+productName.image.picture)}/>
+                        <><div className='box15_tape'></div><img style={imageChoise.image}  tabindex="0" src={require('./../assets/img/product/'+productName.image.picture)}/> </>
                         :<img style={imageChoise.image}  src={require('./../assets/img/product/no_photo.jpg')}/>
               :console.log()} 
               {productName.image?
                         productName.image.plan?
-                        <img style={imageChoise.plan} src={require('./../assets/img/product/'+productName.image.plan)}/>
+                        <img style={imageChoise.plan} tabindex="0" src={require('./../assets/img/product/'+productName.image.plan)}/>
                         :<img style={imageChoise.plan} src={require('./../assets/img/product/no_photo.jpg')}/>
               :console.log()} 
              <div className='product-item-button'>
@@ -63,6 +63,7 @@ useEffect(()=>{
           </div>
             <div className='product-item-right'>  
             <div className='product-discription'>
+            <div className='product-discription-inner'>
               <h2>Описание</h2>
                       {productName.discription? productName.discription.map(el=> <p>{el}</p>) :undefined}
                 {productName.complectation?
@@ -72,9 +73,10 @@ useEffect(()=>{
                   </>                  
                 :undefined}
                 {productName.image?
-                  productName.image.video?<YouTube opts={{height: '300',width: '540'}} videoId={productName.image.video}/>:undefined
+                  productName.image.video?<YouTube opts={{height: '450',width: '100%'}} videoId={productName.image.video}/>:undefined
                 :undefined
               }
+            </div>
             </div>
           </div>
           </div>

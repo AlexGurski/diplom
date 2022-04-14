@@ -6,7 +6,7 @@ import { YMaps, Map, Placemark } from "react-yandex-maps";
 import firebaseConfig from './../container/base'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
-
+import FeedBack from '../container/FeedBack'
 
 const app = firebase.initializeApp(firebaseConfig);
 const database = app.database().ref('contacts');
@@ -31,7 +31,7 @@ function Contacts() {
   return (
 
 <div className="contacts">
-
+<FeedBack /> 
   <div className='contacts-container'>
     <div className='contacts-left'>
     <h2>Контакты</h2>
@@ -50,7 +50,8 @@ function Contacts() {
           <div class="paper">            
               <h4>Отдел маркетинга и продаж</h4>
             <div className='paper-p paperPhone'>
-              <p>тел: +375 (163) 67-25-73, 64-49-73</p>
+              <p>тел: +375 (163) 67-25-73 </p>
+              <p>64-49-73</p>
               <p>факс: 67-29-95</p>
               <p>E-mail: bzsp-omip@mail.ru</p>
              </div>
