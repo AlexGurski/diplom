@@ -1,6 +1,8 @@
 .all-admin{
     display: flex;
-    flex-direction: row;
+}
+.all-admin > select{
+    width: 30%;
 }
 .admin-catalog{
     display: flex;
@@ -13,7 +15,7 @@
 }
 .feedback{
     width: 500px;
-    height: 500px;
+   
     color:white
 }
 .feedback > div{
