@@ -15,12 +15,6 @@ const database = app.database().ref('feedback');
 
 const Admin = () => {
   const [feedback, setFeedback] = useState([])
-  useEffect(()=>{
-    database.on('value', snap =>{  
-  //  console.log(snap.val())  
-    setFeedback(snap.val())    
-  })  
-  },[])
 
   const ref = firebase.database().ref('catalog/');
   const [type, setType] = useState('Гантели сборные РГ6М, РГ15М');
@@ -33,12 +27,18 @@ const Admin = () => {
   const [pdf, setPdf] = useState('');
   const [video, setVideo] = useState('');
 
-
-  const[dataBase, setDataBase] = useState([])
+  const [dataBase, setDataBase] = useState([])
+  const [dataBase1, setDataBase1] = useState([])
+  const [editType, setEditType] = useState('')
 
   useEffect(()=>{
+    database.on('value', snap =>{   
+      setFeedback(snap.val())    
+    }) 
+
     ref.on("value", function(snapshot) {
       setDataBase(Object.keys(snapshot.val()) )
+      setDataBase1(snapshot.val() )
    }, function (error) {
       console.log("Error: " + error.code);
    });
@@ -80,7 +80,6 @@ const addToDB = ()=>{
     }
   }
   
-
  if (pdf){
       qwer[name]={...qwer[name],
         image:{
@@ -107,7 +106,7 @@ if (notationName){
 }
 return qwer
   }
- 
+     
   firebase.database().ref('catalog/'+type+'/').update(qwerty())
     console.log(qwerty()) 
     
@@ -119,6 +118,7 @@ const responsibleColor = (color)=>{
   if (color===2) return {backgroundColor:'green', color:'black'}
 }
 const [box, setBox]=useState()
+
 const responsed = (e, clickY, clickX) =>{
   setBox(
     <>
@@ -152,23 +152,82 @@ const responsed = (e, clickY, clickX) =>{
   return (
     <div className='all-admin'>
       {box}
-    <div className='admin-catalog' > 
+    <div className='admin-catalog'> 
+
+    <select onChange={e=>setEditType(e.target.value)}>
+       <option>Добавить</option>
+       <option>Редактировать</option>
+       <option>Удалить</option>
+      </select>
+
       тип
-      <select onChange={e=>setType(e.target.value)}>
+
+      <select onChange={e=>{ 
+        setName('');
+        setType(e.target.value);
+        setPicture('');
+        setPlan('');
+        setPdf('');
+        setVideo('');
+        setNotationName('');
+        setNotationValue('');
+      }
+        }>
        {dataBase.map(el=><option>{el}</option>)} 
       </select>
+
       имя
-      <input type='text' value={name} onChange={(e) => setName(e.target.value)}/>
-      discription
-      <input type='text'   onKeyPress={
+
+      {editType==='Редактировать' || editType==='Удалить'?      
+      <select onChange={e=>{
+        setName(e.target.value);
+        setPicture('');
+        setPlan('');
+        setPdf('');
+        setVideo('');
+        setNotationName('');
+        setNotationValue('');
+        setDiscription(dataBase1[type][e.target.value].discription)
+        setPicture(dataBase1[type][e.target.value].image.picture);
+        setPlan(dataBase1[type][e.target.value].image.plan);
+        setPdf(dataBase1[type][e.target.value].image.pdf);
+        setVideo(dataBase1[type][e.target.value].image.video);
+        setNotationName(Object.keys(dataBase1[type][e.target.value].notation))
+        setNotationValue(dataBase1[type][e.target.value].notation[1])
+        }}>
+       <option selected >Выберите продукт</option>
+        {dataBase1[type]!=undefined?
+          Object.keys(dataBase1[type]).map(e=>e!='image'?<option>{e}</option>:undefined)
+          :undefined
+        }               
+      </select>:undefined  
+    }
+   {editType!=='Редактировать'&& editType!=='Удалить'? <input type='text' value={name} onChange={(e) => setName(e.target.value)}/>:undefined}
+
+    discription
+
+   {editType==='Редактировать'|| editType==='Удалить'? discription.map((el,index)=> 
+       <textarea  defaultValue={el} onChange={(e) =>{
+        let disc = discription;
+        disc[index]=e.target.value;
+        setDiscription(disc);
+        console.log(discription)
+       }}/>
+      ):undefined}
+     
+  
+     {editType!=='Редактировать'&& editType!=='Удалить'? 
+       <input type='text'   onKeyPress={
         (e => {
           if (e.key==='Enter'){
             setDiscription([...discription, e.target.value])
             e.target.value=''
           }
         })
-          
         } />
+        :undefined 
+    }
+     
       notation
       <input type='text'  value={notationName} onChange={(e) => setNotationName(e.target.value)} />
       <input type='text'  value={notationValue} onChange={(e) => setNotationValue(e.target.value)} />
@@ -180,13 +239,15 @@ const responsed = (e, clickY, clickX) =>{
       <input type='text'  value={pdf} onChange={(e) => setPdf(e.target.value)} />
       video
       <input type='text'  value={video}  onChange={(e) => setVideo(e.target.value)} />
-      <input type='button' onClick={()=>{addToDB(); setName(''); setNotationName(''); setNotationValue(''); setPicture(''); setPlan(''); setPdf(''); setVideo(''); setDiscription([])}} value='сохранить'/>
+      {editType!=='Удалить'? <input type='button' onClick={()=>{addToDB(); setName(''); setNotationName(''); setNotationValue(''); setPicture(''); setPlan(''); setPdf(''); setVideo(''); setDiscription([])}} value='сохранить'/> :undefined} 
+      {editType==='Удалить'?<input type='button' onClick={()=>firebase.database().ref('catalog/'+type+'/'+name).remove()} value='Удалить'/>:undefined}    
+      
     </div>
 
     
     <div className='feedback'>
         {Object.keys(feedback).map((el)=>
-        <div onMouseDown={click=>responsed(el, click.clientY, click.pageX)} key={el} style={responsibleColor(feedback[el].response)}>
+        <div  onClick={click=>responsed(el, click.clientY, click.clientX)} key={el} style={responsibleColor(feedback[el].response)}>
          
           <h2>{feedback[el].name}</h2>
           <h5>{feedback[el].organization}</h5>
