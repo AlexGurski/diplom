@@ -9,7 +9,7 @@ const ModalNews = (props) =>
   <div className='news-text'>
   <div className='closeModalNews' onClick={()=>props.onModalClose()}>╳</div>
     <h1>{props.news.name}</h1>
-    {props.news.text.map(el=><p key={el+el}>{el}</p>)}
+    {props.news.text.split('\n').map(el=><p key={el+el}>{el}</p>)}
     
     <div><small>{props.news.date}</small></div>
   </div>
@@ -27,8 +27,7 @@ const News = ({news}) => {
   const [modal, setModal]=useState(false)
 
   useEffect(()=>{
-    if (news){setState(news.reverse())}
-    console.log(news)
+    if (news){setState(news)}
   },[news])
 
 
@@ -38,13 +37,14 @@ const News = ({news}) => {
     {modal?<ModalNews  onModalClose={()=>{setModal(!modal)}} state={modal} news={count}/>:undefined}
        <div className='news-container'>
          {
-          state.map(el=>
+          state.reverse().map(el=>
+          
             <div className="blog-card" key={el.text}  onClick={()=>{setModal(!modal); setCount({name:el.name, text:el.text, date:el.date})}}>            
               <img className="blog-img" src={require('./../assets/img/news/'+el.image)}   />
               <div className="text-overlay">
                 <h5>{el.name}</h5>
                 <p>{el.short}</p>
-              </div>
+              </div>  {console.log(el)}
             </div>
          )
          }

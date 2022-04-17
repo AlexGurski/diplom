@@ -40,6 +40,11 @@
     transform: scale(1.2);
 }
 
+.newsItem{
+    display: flex;
+    flex-direction: column;
+    color: antiquewhite;
+}
 
 
 

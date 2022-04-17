@@ -11,12 +11,21 @@ import {BsEyeSlashFill} from "react-icons/bs"
 import {GrStatusGood} from "react-icons/gr"
 const app = firebase.initializeApp(firebaseConfig);
 const database = app.database().ref('feedback');
-
+const ref = firebase.database().ref('catalog/');
+const newsDB = firebase.database().ref('news/');
+let now = new Date();
 
 const Admin = () => {
-  const [feedback, setFeedback] = useState([])
 
-  const ref = firebase.database().ref('catalog/');
+  const [feedback, setFeedback] = useState([])
+  const [news, setNews] = useState({
+    name:'',
+    text:{},
+    short:'',
+    image:'',
+    date:now
+  })
+
   const [type, setType] = useState('Гантели сборные РГ6М, РГ15М');
   const [name, setName] = useState('');
   const [discription, setDiscription] = useState([]);
@@ -27,13 +36,17 @@ const Admin = () => {
   const [pdf, setPdf] = useState('');
   const [video, setVideo] = useState('');
 
-  const [dataBase, setDataBase] = useState([])
-  const [dataBase1, setDataBase1] = useState([])
-  const [editType, setEditType] = useState('')
+  const [textar, setTexta] = useState('');
+  const [dataBase, setDataBase] = useState([]);
+  const [dataBase1, setDataBase1] = useState([]);
+  const [editType, setEditType] = useState('');
 
   useEffect(()=>{
     database.on('value', snap =>{   
       setFeedback(snap.val())    
+    }) 
+    newsDB.on('value', snap =>{   
+      setNews(snap.val())   
     }) 
 
     ref.on("value", function(snapshot) {
@@ -45,6 +58,9 @@ const Admin = () => {
     
   },[])
 
+  const textToArray = (text) => {
+    console.log(text.split('\n'))
+  }
 const addToDB = ()=>{
 
   let qwerty = ()=> {
@@ -211,7 +227,7 @@ const responsed = (e, clickY, clickX) =>{
         let disc = discription;
         disc[index]=e.target.value;
         setDiscription(disc);
-        console.log(discription)
+      //  console.log(discription)
        }}/>
       ):undefined}
      
@@ -236,27 +252,43 @@ const responsed = (e, clickY, clickX) =>{
       plan
       <input type='text'  value={plan} onChange={(e) => setPlan(e.target.value)} />
       pdf
-      <input type='text'  value={pdf} onChange={(e) => setPdf(e.target.value)} />
+     
+      <textarea  value={pdf} onChange={(e) => setPdf(e.target.value)}></textarea>
       video
       <input type='text'  value={video}  onChange={(e) => setVideo(e.target.value)} />
       {editType!=='Удалить'? <input type='button' onClick={()=>{addToDB(); setName(''); setNotationName(''); setNotationValue(''); setPicture(''); setPlan(''); setPdf(''); setVideo(''); setDiscription([])}} value='сохранить'/> :undefined} 
       {editType==='Удалить'?<input type='button' onClick={()=>firebase.database().ref('catalog/'+type+'/'+name).remove()} value='Удалить'/>:undefined}    
       
     </div>
-
     
-    <div className='feedback'>
-        {Object.keys(feedback).map((el)=>
-        <div  onClick={click=>responsed(el, click.clientY, click.clientX)} key={el} style={responsibleColor(feedback[el].response)}>
-         
-          <h2>{feedback[el].name}</h2>
-          <h5>{feedback[el].organization}</h5>
-          <p>{feedback[el].phone}</p>
-          <span>{feedback[el].text}</span>
-          <h3>{feedback[el].id}</h3>
-        </div>)}
+      <div className='feedback'>
+          {Object.keys(feedback).map((el)=>
+          <div  onClick={click=>responsed(el, click.clientY, click.clientX)} key={el} style={responsibleColor(feedback[el].response)}>
+          
+            <h2>{feedback[el].name}</h2>
+            <h5>{feedback[el].organization}</h5>
+            <p>{feedback[el].phone}</p>
+            <span>{feedback[el].text}</span>
+            <h3>{feedback[el].id}</h3>
+          </div>)}
+      </div>
+      <div className='newsAdmin'>
+         <div className='newsItem'>
+           название
+           <input type='text'   onChange={(e) => setTexta({...textar,name:e.target.value,date:now})} />
+           краткое содержание
+           <input type='text'   onChange={(e) => setTexta({...textar,short:e.target.value})} />
+           текст новости
+           <textarea onChange={(e)=>setTexta({...textar,text:e.target.value})}></textarea>
+           изображение
+           <input type='text'   onChange={(e) => setTexta({...textar,image:e.target.value})
+          } 
+           /> 
+           <input type='button' onClick={()=>{newsDB.update({[Object.keys(news).length+1]:textar})}} value='сохранить'></input>
+         </div>
+      </div>
     </div>
-    </div>
+    
   );
 }
 export default Admin 
