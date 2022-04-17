@@ -7,14 +7,15 @@ import {MdOutlineCancel} from "react-icons/md";
 import {IoIosEye} from "react-icons/io";
 import {BsEyeSlashFill} from "react-icons/bs"
 import {GrStatusGood} from "react-icons/gr"
+import Autorization from './container/Autirization'
 const app = firebase.initializeApp(firebaseConfig);
 const database = app.database().ref('feedback');
 const ref = firebase.database().ref('catalog/');
 const newsDB = firebase.database().ref('news/');
+
 let now = new Date();
 
 const Admin = () => {
-
   const [feedback, setFeedback] = useState([])
   const [news, setNews] = useState({
     name:'',
@@ -38,6 +39,13 @@ const Admin = () => {
   const [dataBase, setDataBase] = useState([]);
   const [dataBase1, setDataBase1] = useState([]);
   const [editType, setEditType] = useState('');
+
+  const [permission, setPermission] = useState();
+  const [display, setDisplay] = useState({display:'none'})
+
+  useEffect(()=>{
+    permission==1?setDisplay({display:'flex'}):setDisplay({display:'none'})
+  },[permission])
 
   useEffect(()=>{
     database.on('value', snap =>{   
@@ -162,11 +170,13 @@ const responsed = (e, clickY, clickX) =>{
   </>
   )
 }
-
   return (
-    <div className='all-admin'>
+    <>
+    <Autorization onAutorization={async (el)=>{setPermission(el.permission)}}/>
+    <div className='all-admin' style={display}>
+     
       {box}
-    <div className='admin-catalog'> 
+    <div  className='admin-catalog'> 
 
     <select onChange={e=>setEditType(e.target.value)}>
        <option>Добавить</option>
@@ -279,14 +289,13 @@ const responsed = (e, clickY, clickX) =>{
            текст новости
            <textarea onChange={(e)=>setTexta({...textar,text:e.target.value})}></textarea>
            изображение
-           <input type='text'   onChange={(e) => setTexta({...textar,image:e.target.value})
-          } 
+           <input type='text'   onChange={(e) => setTexta({...textar,image:e.target.value})} 
            /> 
            <input type='button' onClick={()=>{newsDB.update({[Object.keys(news).length+1]:textar})}} value='сохранить'></input>
          </div>
       </div>
     </div>
-    
+</>  
   );
 }
 export default Admin 
