@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import '../assets/style/news.css';
-import { Link} from 'react-router-dom'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const ModalNews = (props) =>
   <div id="open-modal" class="modal-window">
@@ -18,6 +18,10 @@ const ModalNews = (props) =>
 
 const News = ({news}) => {
 
+  useEffect(()=>{
+    AOS.init();
+  },[])
+
   const [state, setState]=useState(news)
   const [count,setCount]=useState({
     name:'',
@@ -33,13 +37,13 @@ const News = ({news}) => {
 
   return (
     <div className='news'>    
-    <h2>НОВОСТИ</h2>  
+    <h2 data-aos-duration="1500" data-aos="fade-down">НОВОСТИ</h2>  
     {modal?<ModalNews  onModalClose={()=>{setModal(!modal)}} state={modal} news={count}/>:undefined}
        <div className='news-container'>
          {
           state.reverse().map(el=>
           
-            <div className="blog-card" key={el.text}  onClick={()=>{setModal(!modal); setCount({name:el.name, text:el.text, date:el.date})}}>            
+            <div className="blog-card" key={el.text}  onClick={()=>{setModal(!modal); setCount({name:el.name, text:el.text, date:el.date})}} data-aos="zoom-out" data-aos-duration="1500">            
               <img className="blog-img" src={require('./../assets/img/news/'+el.image)}   />
               <div className="text-overlay">
                 <h5>{el.name}</h5>

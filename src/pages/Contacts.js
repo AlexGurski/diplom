@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import {Link} from 'react-router-dom'
 import '../assets/style/contacts.css';
 import { YMaps, Map, Placemark } from "react-yandex-maps";
 import firebaseConfig from './../container/base'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 import FeedBack from '../container/FeedBack'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const app = firebase.initializeApp(firebaseConfig);
 const database = app.database().ref('contacts');
 
@@ -23,6 +22,7 @@ function Contacts() {
 
   const [state, setState] = useState([]);
   useEffect(()=>{
+    AOS.init();
     database.on('value', snap =>{  
     setState(snap.val())      
   })  
@@ -77,7 +77,7 @@ function Contacts() {
       <div class="col col-4">	E-MAIL</div>
     </li>
     {state.map(el=>
-      <li class="table-row">
+      <li class="table-row" data-aos="fade-up" data-aos-duration="3000">
       <div class="col col-1" data-label="">{el.name}</div>
       <div class="col col-2" data-label="ТЕЛЕФОН">{el.phone}</div>
       <div class="col col-3" data-label="ФАКС">{el.fax}</div>

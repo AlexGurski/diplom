@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import {Link, useNavigate, Routes, Route } from 'react-router-dom'
 
 import './assets/style/header-style.css';
 import firebaseConfig from './container/base';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
-import {  FcSearch } from "react-icons/fc";
 
 const app = firebase.initializeApp(firebaseConfig);
-const database = app.database();
 
 function Header() {
   

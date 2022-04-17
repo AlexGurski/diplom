@@ -1,7 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import ReactDOM from 'react-dom';
 import {Routes, Route, Link} from 'react-router-dom'
-
 import Header from './Header';
 import { Homepage } from './pages/Homepage';
 import { Catalog } from './pages/Catalog';
@@ -14,11 +12,11 @@ import Admin from './Admin';
 import {News} from './pages/News';
 import {About} from './pages/About';
 import './assets/style/all-style.css'
-
 import firebaseConfig from './container/base';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 import { NotFound } from './pages/404';
+
 
 
 const app = firebase.initializeApp(firebaseConfig);

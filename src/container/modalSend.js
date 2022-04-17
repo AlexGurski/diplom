@@ -6,10 +6,8 @@ import 'firebase/compat/database';
 import './../assets/style/modal.css';
 
 const app = firebase.initializeApp(firebaseConfig);
-const database = app.database();
 
 function Modal(props) {
-  const ref = firebase.database().ref('catalog/');
   const [message, setMesage] = useState({
     id:'',
     name:'',

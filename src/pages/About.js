@@ -1,5 +1,4 @@
 import React,{useState,useEffect} from 'react';
-import ReactDOM from 'react-dom';
 import '../assets/style/productions.css';
 import '../assets/style/about.css';
 import FeedBack from '../container/FeedBack'

@@ -1,13 +1,16 @@
 import React,{useState,useEffect, Component} from 'react';
-import ReactDOM from 'react-dom';
 import './../assets/style/homepagenews-style.css';
 import firebaseConfig from './base';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 import { Link} from 'react-router-dom'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 class News extends Component{
   constructor(){
     super()
+    AOS.init();
     this.state = {
       newsArray:[]
     }
@@ -19,7 +22,7 @@ class News extends Component{
   this.database.on('value', snap =>{
     this.setState({
       newsArray:snap.val().reverse().map(el=>
-      <Link to={'/news'} className="card">
+      <Link to={'/news'} className="card" data-aos="flip-left"  data-aos-easing="ease-out-cubic" data-aos-duration="2000">
           <div className="imgBx">
             <img src={require ('./../assets/img/news/'+el.image)}/>
             <h5>{el.date}</h5>
@@ -39,14 +42,14 @@ class News extends Component{
     return (
       <>
       <div className='news-form'>
-      <h2>НАШИ НОВОСТИ</h2>
+      <h2 data-aos="zoom-out">НАШИ НОВОСТИ</h2>
       <div className='news-form-container'>
         {
         this.state.newsArray
         }
       
       </div>
-      <Link id='homepage-about-right-button'to='/news'>Все новости +</Link> 
+      <Link id='homepage-about-right-button'to='/news' data-aos="zoom-out">Все новости +</Link> 
 </div>
       </>
     )

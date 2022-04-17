@@ -1,11 +1,11 @@
 import React,{useState,useEffect} from 'react';
-import ReactDOM from 'react-dom';
 import '../assets/style/product.css';
 import YouTube from 'react-youtube';
 import { Link} from 'react-router-dom'
-
 import FeedBack from '../container/FeedBack'
 import { useParams} from 'react-router-dom'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Product = (db) => {
 const {id, product} =  useParams();
@@ -18,6 +18,9 @@ const [imageChoise, setImageChoise]=useState({
   colorPlan:{background:'white'}
 })
 
+useEffect(()=>{
+  AOS.init();
+},[])
 
 useEffect(()=>{  
   db.db[id] !=undefined ? setProductName(db.db[id][product]):setProductName([])
@@ -29,9 +32,9 @@ useEffect(()=>{
       {
         <div className='product-container'>
           <Link to={'/catalog/'+id} className='button-back'><span>Назад</span></Link>
-          <h1>{product}</h1>
+          <h1 data-aos="fade-down" data-aos-duration="2000">{product}</h1>
           <div className='product-item'>
-          <div className='product-item-left'>
+          <div className='product-item-left' data-aos="fade-right" data-aos-duration="2500">
               {productName.image?
                         productName.image.picture?
                         <><div className='box15_tape'></div><img style={imageChoise.image}  tabindex="0" src={require('./../assets/img/product/'+productName.image.picture)}/> </>
@@ -61,9 +64,9 @@ useEffect(()=>{
                       }> Чертёж</span>
              </div>
           </div>
-            <div className='product-item-right'>  
+            <div className='product-item-right' data-aos="fade-left" data-aos-duration="1500">  
             <div className='product-discription'>
-            <div className='product-discription-inner'>
+            <div className='product-discription-inner'  >
               <h2>Описание</h2>
                       {productName.discription? productName.discription.map(el=> <p>{el}</p>) :undefined}
                 {productName.complectation?

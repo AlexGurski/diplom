@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import Modal from './modalSend'
 import '../assets/style/product.css';
 function FeedBack(props) {

@@ -1,4 +1,4 @@
-import React,{useState,useEffect, Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom'
 import './assets/style/footer-style.css';
 

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import './assets/style/admin.css';
-import { Link} from 'react-router-dom'
 import firebaseConfig from './container/base';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';

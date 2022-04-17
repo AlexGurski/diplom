@@ -1,8 +1,3 @@
-
-
-
-
-
 .about-show-container{
     display: flex;
     justify-content: center;
@@ -76,6 +71,13 @@
       align-self: flex-start;
     text-indent: 2em;
   }
+  .OurPossibility p{
+    text-align: left;
+  }
+  .OurPossibility h2{
+    text-align: center;
+  }
+  
 
   @media screen and (orientation:portrait) {
     .production-list p{

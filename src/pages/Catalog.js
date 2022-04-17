@@ -1,5 +1,4 @@
 import React,{useState,useEffect} from 'react';
-import ReactDOM from 'react-dom';
 import '../assets/style/catalog.css';
 import firebaseConfig from '../container/base';
 import firebase from 'firebase/compat/app';
