@@ -1,13 +1,16 @@
 import React,{useState,useEffect, Component} from 'react';
-import ReactDOM from 'react-dom';
-import './../assets/style/news-style.css';
+import './../assets/style/homepagenews-style.css';
 import firebaseConfig from './base';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 import { Link} from 'react-router-dom'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 class News extends Component{
   constructor(){
     super()
+    AOS.init();
     this.state = {
       newsArray:[]
     }
@@ -15,85 +18,38 @@ class News extends Component{
     this.database = this.app.database().ref('news')
   }
 
-  newsBlock = ({date,name,discription,img})=>{
-    return(
-          <> 
-          
-              <div className='news-form'>
-              <img className='news-form-img' src={require ('./../assets/img/news/'+img)}></img>
-                <span className='news-form-date'>{date}</span> 
-                <h4 className='news-form-name'>{name} </h4>
-                <div className='news-form-text'> {discription}</div>
-              </div>              
-          </>
-      )       
-} 
   componentDidMount(){
   this.database.on('value', snap =>{
     this.setState({
-      newsArray:snap.val()
+      newsArray:snap.val().reverse().map(el=>
+      <Link to={'/news'} className="card" data-aos="flip-left"  data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+          <div className="imgBx">
+            <img src={require ('./../assets/img/news/'+el.image)}/>
+            <h5>{el.date}</h5>
+              <h4>{el.name}</h4>
+          </div>
+          <div className="details">
+              
+              <h4>{el.name}</h4>
+              <p>{el.short}</p>
+          </div>
+      </Link>
+        )
     })    
    })
 }
   render(){
     return (
       <>
-      
       <div className='news-form'>
-      <h2>НАШИ НОВОСТИ</h2>
+      <h2 data-aos="zoom-out">НАШИ НОВОСТИ</h2>
       <div className='news-form-container'>
-      <div className="card">
-            <div className="imgBx">
-                <img src={require ('./../assets/img/news/43_image002-3-370x200-cf7.jpg')}/>
-                <h4>8-я международная специализированная выставка "Машиностроение-2022" в Минске</h4>
-            </div>
-            <div className="details">
-                <h4>Выставка "Машиностроение-2022" в Минске</h4>
-                <p>В период с 5 по 8 апреля 2022 г. в Минске, пр-т. Победителей, 20/2, Футбольный манеж, пройдет международная специализированная выставка «Машиностроение-2022», на которой будет экспонироваться продукция нашего завода (стенд В4).</p>
-            </div>
+        {
+        this.state.newsArray
+        }
+      
       </div>
-      <div className="card">
-            <div className="imgBx">
-                <img src={require ('./../assets/img/news/eaf51965297177492a35fce047aef0c7-370x200-571.jpg')}/>
-                <h4>8-я международная специализированная выставка "Машиностроение-2022" в Минске</h4>
-            </div>
-            <div className="details">
-                <h4>Выставка "Машиностроение-2022" в Минске</h4>
-                <p>В период с 5 по 8 апреля 2022 г. в Минске, пр-т. Победителей, 20/2, Футбольный манеж, пройдет международная специализированная выставка «Машиностроение-2022», на которой будет экспонироваться продукция нашего завода (стенд В4).</p>
-            </div>
-      </div>
-      <div className="card">
-            <div className="imgBx">
-                <img src={require ('./../assets/img/news/energy-kopiya-370x200-8e2.jpg')}/>
-                <h4>8-я международная специализированная выставка "Машиностроение-2022" в Минске</h4>
-            </div>
-            <div className="details">
-                <h4>Выставка "Машиностроение-2022" в Минске</h4>
-                <p>В период с 5 по 8 апреля 2022 г. в Минске, пр-т. Победителей, 20/2, Футбольный манеж, пройдет международная специализированная выставка «Машиностроение-2022», на которой будет экспонироваться продукция нашего завода (стенд В4).</p>
-            </div>
-      </div>
-      <div className="card">
-            <div className="imgBx">
-                <img src={require ('./../assets/img/news/eaf51965297177492a35fce047aef0c7-370x200-571.jpg')}/>
-                <h4>8-я международная специализированная выставка "Машиностроение-2022" в Минске</h4>
-            </div>
-            <div className="details">
-                <h4>Выставка "Машиностроение-2022" в Минске</h4>
-                <p>В период с 5 по 8 апреля 2022 г. в Минске, пр-т. Победителей, 20/2, Футбольный манеж, пройдет международная специализированная выставка «Машиностроение-2022», на которой будет экспонироваться продукция нашего завода (стенд В4).</p>
-            </div>
-      </div>
-      <div className="card">
-            <div className="imgBx">
-                <img src={require ('./../assets/img/news/energy-kopiya-370x200-8e2.jpg')}/>
-                <h4>8-я международная специализированная выставка "Машиностроение-2022" в Минске</h4>
-            </div>
-            <div className="details">
-                <h4>Выставка "Машиностроение-2022" в Минске</h4>
-                <p>В период с 5 по 8 апреля 2022 г. в Минске, пр-т. Победителей, 20/2, Футбольный манеж, пройдет международная специализированная выставка «Машиностроение-2022», на которой будет экспонироваться продукция нашего завода (стенд В4).</p>
-            </div>
-      </div>
-      </div>
-      <Link id='homepage-about-right-button'to='/catalog'>Все новости +</Link> 
+      <Link id='homepage-about-right-button'to='/news' data-aos="zoom-out">Все новости +</Link> 
 </div>
       </>
     )

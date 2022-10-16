@@ -1,16 +1,21 @@
 import React,{useState,useEffect} from 'react';
-import ReactDOM from 'react-dom';
-import '../assets/style/catalog.css';
+import '../assets/style/productions.css';
 import { Link} from 'react-router-dom'
-
 import 'firebase/compat/database';
 import { useParams} from 'react-router-dom'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Productions = (db) => {
 const {id} =  useParams();
 
 const [productName, setProductName]=useState([])
 const [productList, setProductList]=useState([])
+
+useEffect(()=>{
+  AOS.init();
+},[])
+
 useEffect(()=>{
   setProductList(Object.keys(db.db))
   db.db[id] !=undefined ? setProductName(db.db[id]):setProductName([])
@@ -19,24 +24,27 @@ useEffect(()=>{
   return (
     
     <div className='productions'>  
-    <h2 className='productions-header'>{id}</h2>
+    <p class="text" lang="ru">
+      {id}
+    </p>
     <div className='productions-container'>
     <div className='productions-list'>
       {
         productList.map(el=>
-          <Link to={`/catalog/${el}`}  key={el}>
-              <div>{el}</div>
+          <Link to={`/catalog/${el}`}  key={el} >
+              <div lang="ru">{el}</div>
           </Link>
         )
       }
       </div>  
+      <div className='productions-show-container'>
       <div className='productions-show'>
         { 
            Object.keys(productName).map(el=>{
-          //  console.log(productName[el]) 
+            console.log(productName) 
             return(
               el=='image'?undefined:
-              <Link to={`/catalog/${id}/${el}`}  key={el}>
+              <Link to={`/catalog/${id}/${el}`}  key={el} data-aos="zoom-in" data-aos-duration="1500">
                 <div className='productions-show-item'>{el.image}
                   {
                    productName[el].image!=undefined ? <img src={require ('./../assets/img/product/'+productName[el].image.picture)}/>:<img/>
@@ -65,7 +73,7 @@ useEffect(()=>{
            )   
         }
       </div>  
-
+      </div>
     </div>
         
     </div>

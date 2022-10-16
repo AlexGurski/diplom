@@ -1,8 +1,8 @@
-import React,{useState,useEffect, Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom'
 import './assets/style/footer-style.css';
 
-
+//обычная разметка как в хтмл
 const App = () => (
   <div className='footer'>    
     <div className='footer-left'>
@@ -12,9 +12,9 @@ const App = () => (
       <div className='footer-center-nav'>
         <Link to='/'>Главная</Link>
         <Link to='/catalog'>Каталог</Link>
-        <Link to='#'>О компании</Link>
-        <Link to='#'>Новости</Link>
-        <Link to='#'>Контакты</Link>
+        <Link to='/about'>О компании</Link>
+        <Link to='/news'>Новости</Link>
+        <Link to='/contacts'>Контакты</Link>
       </div>
       <div className='footer-center-adres'>
       225411 Республика Беларусь, Брестская область,г. Барановичи, ул. Пролетарская, 40
